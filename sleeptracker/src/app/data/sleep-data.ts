@@ -1,20 +1,20 @@
 import { nanoid } from 'nanoid';
 
 export class SleepData {
-	id:string;
-	loggedAt:Date;
+	date:string;
+	sleeps:number[] = [0,0,0,0,0,0,0];
+	time:number;
 
-	constructor() {
-		//Assign a random (unique) ID. This may be useful for comparison (e.g., are two logged entries the same).
-		this.id = nanoid();
-		this.loggedAt = new Date();
+	constructor(date:string, num:number) {
+		this.date = date;
+		this.time = 0;
+		if (num != 10)
+		{
+			this.sleeps[num] = 1;
+		}
 	}
 
 	summaryString():string {
 		return 'Unknown sleep data';
-	}
-
-	dateString():string {
-		return this.loggedAt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
 }

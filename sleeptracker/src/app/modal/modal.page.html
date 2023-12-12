@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Sleep Tracker <img src="../../assets/sleepcycle2.gif" /> 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-button (click)="goBack()">Back</ion-button> 
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-content>
+  
+  <ion-card><ion-list-header><h1>View Specific Date Data</h1></ion-list-header></ion-card>
+
+  <ion-card>
+    <ion-list-header>Select a Date</ion-list-header>
+    <ion-item>
+
+      <ion-datetime display-format="DD/MM/YYYY" id="dat" [(ngModel)]="saveDate" (ionChange)="showMod()"></ion-datetime>
+
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <div *ngFor="let item of sleepies">
+      <ion-list *ngIf="item.date == saveDate">
+          <ion-item>Date:</ion-item>
+          <ion-item>{{item.date}}</ion-item>
+          <ion-item> </ion-item>
+          <ion-item>Sleepiness Levels Reported:</ion-item>
+          <ion-item>1. Feeling active, vital, alert, or wide awake: {{item.sleeps[0]}}</ion-item>
+          <ion-item>2. Functioning at high levels, but not at peak; able to concentrate: {{item.sleeps[1]}}</ion-item>
+          <ion-item>3. Awake, but relaxed; responsive but not fully alert: {{item.sleeps[2]}}</ion-item>
+          <ion-item>4. Somewhat foggy, let down: {{item.sleeps[3]}}</ion-item>
+          <ion-item>5. Foggy; losing interest in remaining awake; slowed down: {{item.sleeps[4]}}</ion-item>
+          <ion-item>6. Sleepy, woozy, fighting sleep; prefer to lie down: {{item.sleeps[5]}}</ion-item>
+          <ion-item>7. No longer fighting sleep, sleep onset soon; having dream-like thoughts: {{item.sleeps[6]}}</ion-item>
+          <ion-item> </ion-item>
+          <ion-item>Hours Slept:</ion-item>
+          <ion-item>{{item.time}}</ion-item>
+      </ion-list>
+    </div>
+  </ion-card>
+
+</ion-content>

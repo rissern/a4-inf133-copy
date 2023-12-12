@@ -1,10 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Sleep Tracker 
+      Sleep Tracker <img src="../../assets/sleepcycle2.gif" />
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-button (click)="viewInfo()">View Sleep Data</ion-button> 
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -13,8 +20,65 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card><ion-list-header><h1>Log Overnight Sleep</h1></ion-list-header></ion-card>
+
+  <ion-card>
+    <ion-list-header>Sleep Start</ion-list-header>
+    <ion-item>
+
+      <ion-datetime display-format="DD/MM/YYYY" id="dat" [(ngModel)]="startDate" (ionChange)="showDate()"></ion-datetime>
+
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-list-header>Sleep End</ion-list-header>
+    <ion-item>
+      <ion-datetime display-format="DD/MM/YYYY" id="dat" [(ngModel)]="endDate" (ionChange)="showDate()"></ion-datetime>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-list-header><h1>Log Sleep</h1></ion-list-header>
+    <ion-button (click)="logInfo()">LOG</ion-button>
+  </ion-card>
+
+
+  <ion-card><ion-list-header><h1>Log Sleepiness</h1></ion-list-header></ion-card>
+
+  <ion-card>
+    <ion-list-header>Enter Date and Time</ion-list-header>
+    <ion-item>
+      <ion-datetime display-format="DD/MM/YYYY" id="dat" [(ngModel)]="sleepyDate" (ionChange)="showDate()"></ion-datetime>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-list-header><h1>Enter Sleepiness Level</h1></ion-list-header>
+      <ion-item>
+        <ion-label>Degrees of Sleepiness:</ion-label>
+        <ion-list>
+          <ion-item>1. Feeling active, vital, alert, or wide awake</ion-item>
+          <ion-item>2. Functioning at high levels, but not at peak; able to concentrate</ion-item>
+          <ion-item>3. Awake, but relaxed; responsive but not fully alert</ion-item>
+          <ion-item>4. Somewhat foggy, let down</ion-item>
+          <ion-item>5. Foggy; losing interest in remaining awake; slowed down</ion-item>
+          <ion-item>6. Sleepy, woozy, fighting sleep; prefer to lie down</ion-item>
+          <ion-item>7. No longer fighting sleep, sleep onset soon; having dream-like thoughts</ion-item>
+        </ion-list>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-button (click)="sleepyData(0)">1</ion-button>
+      <ion-button (click)="sleepyData(1)">2</ion-button>
+      <ion-button (click)="sleepyData(2)">3</ion-button>
+      <ion-button (click)="sleepyData(3)">4</ion-button>
+      <ion-button (click)="sleepyData(4)">5</ion-button>
+      <ion-button (click)="sleepyData(5)">6</ion-button>
+      <ion-button (click)="sleepyData(6)">7</ion-button>
+      <ion-button (click)="logSleepy()">Log Sleepiness</ion-button>
+    </ion-card>
+
+
 </ion-content>

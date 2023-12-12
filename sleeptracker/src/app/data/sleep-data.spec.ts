@@ -2,6 +2,6 @@ import { SleepData } from './sleep-data';
 
 describe('SleepData', () => {
   it('should create an instance', () => {
-    expect(new SleepData()).toBeTruthy();
+    expect(new SleepData("null", 1)).toBeTruthy();
   });
 });
