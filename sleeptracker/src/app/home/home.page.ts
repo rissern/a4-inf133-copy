@@ -85,6 +85,13 @@ export class HomePage {
 		ch1 = ch2 - ch1;
 		if (ch1 < 0)
 		{
+			this.alertController.create({
+				header: 'ERROR',
+				message: 'Cannot have a negative amount of sleep',
+				buttons: ['OK']
+				}).then((alert) => {
+				alert.present();
+				});
 			return;
 		}
 		var num = 0;
